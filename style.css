@@ -2,7 +2,7 @@ body {
     --footer-height: 3.5rem;
     position: relative;
     min-height: 100vh;
-    padding-bottom: var(--footer-height);
+    padding-bottom: calc(var(--footer-height) + 350px) /* wave height */;
 }
 
 footer {
