@@ -2,7 +2,7 @@ body {
     --footer-height: 3.5rem;
     position: relative;
     min-height: 100vh;
-    padding-bottom: calc(var(--footer-height) + 1rem);
+    padding-bottom: calc(var(--footer-height));
 }
 
 footer {
@@ -17,9 +17,18 @@ footer {
 }
 
 .icons {
-    word-spacing: 1rem;
+    word-spacing: 0.5rem;
 }
 
 .header-icons {
     font-size: 1.75rem;
+}
+
+.wave {
+    position: absolute;
+    bottom: calc(var(--footer-height) - 10px);
+}
+
+.pb-10 {
+    padding-bottom: 20rem;
 }
