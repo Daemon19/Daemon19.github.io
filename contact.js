@@ -11,13 +11,12 @@ document
 
         const form = e.target;
         const data = new FormData(form);
-        const { name, email, message } = Object.fromEntries(data.entries());
         try {
-            await sendMessage(name, email, message);
+            await sendMessage(data);
             alert("Thanks—message sent!", "success");
             form.reset();
         } catch (err) {
-            alert("Oops, something went wrong.", "error");
+            alert("Oops, something went wrong.", "danger");
             console.error(err);
         }
 
@@ -26,13 +25,13 @@ document
         form.scrollIntoView({ behavior: "smooth" });
     });
 
-async function sendMessage(name, email, message) {
+async function sendMessage(formData) {
     const url =
-        "https://script.google.com/macros/s/AKfycbzd-36tzg0S7NlLLE6JJ_wyuZE2g_Hbck6dgHngYdTYKac3b69HXfCj7mqmrvsWRbUUGA/exec";
+        "https://script.google.com/macros/s/AKfycby2HwwZ67SZehn6hFiiTQm-DOLKKnKIhUwlDfsedcck22KPdK0PSX9a1sfQl6HIh-8R8w/exec";
 
     const resp = await fetch(url, {
         method: "POST",
-        body: { name, email, message },
+        body: formData,
     });
 
     const json = await resp.json();
