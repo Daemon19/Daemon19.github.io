@@ -1,9 +1,14 @@
 const alertPlaceHolder = document.getElementById("alert-place-holder");
+const sendButton = document.getElementById("send-button");
 
 document
     .getElementById("message-form")
     .addEventListener("submit", async (e) => {
         e.preventDefault();
+        sendButton.disabled = true;
+        sendButton.innerHTML =
+            '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+
         const form = e.target;
         const data = new FormData(form);
         const { name, email, message } = Object.fromEntries(data.entries());
@@ -15,6 +20,10 @@ document
             alert("Oops, something went wrong.", "error");
             console.error(err);
         }
+
+        sendButton.disabled = false;
+        sendButton.innerHTML = "Send";
+        form.scrollIntoView({ behavior: "smooth" });
     });
 
 async function sendMessage(name, email, message) {
